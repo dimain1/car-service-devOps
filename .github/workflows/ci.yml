@@ -49,3 +49,12 @@ jobs:
         with:
           name: coverage-go-${{ matrix.go-version }}
           path: car-service/coverage.out
+
+      - name: Save benchmark results
+        run: go test ./repository -run '^$' -bench '^BenchmarkGetCarByID$' -benchmem -count=5 | tee benchmark.txt
+
+      - name: Upload benchmark results
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-go-${{ matrix.go-version }}
+          path: car-service/benchmark.txt
