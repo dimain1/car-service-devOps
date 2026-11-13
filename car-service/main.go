@@ -78,5 +78,5 @@ func main() {
 		fmt.Println("gRPC сервер запущен на :9090")
 		errs <- baseServer.Serve(listener)
 	}()
-	level.Error(logger).Log("exit", <-errs)
+	_ = level.Error(logger).Log("exit", <-errs)
 }
