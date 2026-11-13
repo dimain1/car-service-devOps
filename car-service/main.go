@@ -15,8 +15,8 @@ import (
 	"dmitrii.com/car-service/pb"
 	"dmitrii.com/car-service/repository"
 	"dmitrii.com/car-service/transport"
-	"github.com/go-kit/kit/log"
-	"github.com/go-kit/kit/log/level"
+	"github.com/go-kit/log"
+	"github.com/go-kit/log/level"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"

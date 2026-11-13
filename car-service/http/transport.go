@@ -7,8 +7,8 @@ import (
 
 	"dmitrii.com/car-service/transport"
 
-	"github.com/go-kit/kit/log"
 	kithttp "github.com/go-kit/kit/transport/http"
+	"github.com/go-kit/log"
 	"github.com/gorilla/mux"
 )
 
@@ -70,5 +70,7 @@ func encodeResponse(ctx context.Context, w http.ResponseWriter, response interfa
 func encodeError(_ context.Context, err error, w http.ResponseWriter) {
 	w.Header().Set("Content-Type", "application/json; charset=utf8")
 	w.WriteHeader(http.StatusInternalServerError)
-	json.NewEncoder(w).Encode(map[string]interface{}{"error": err.Error()})
+	if encodeErr := json.NewEncoder(w).Encode(map[string]interface{}{"error": err.Error()}); encodeErr != nil {
+		return
+	}
 }

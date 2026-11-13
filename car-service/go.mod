@@ -4,6 +4,7 @@ go 1.27.1
 
 require (
 	github.com/go-kit/kit v0.13.0
+	github.com/go-kit/log v0.2.1
 	github.com/google/uuid v1.6.0
 	github.com/gorilla/mux v1.8.1
 	google.golang.org/grpc v1.84.0
@@ -11,7 +12,6 @@ require (
 )
 
 require (
-	github.com/go-kit/log v0.2.0 // indirect
 	github.com/go-logfmt/logfmt v0.5.1 // indirect
 	golang.org/x/net v0.61.0 // indirect
 	golang.org/x/sys v0.49.0 // indirect
