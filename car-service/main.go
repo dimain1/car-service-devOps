@@ -37,8 +37,10 @@ func main() {
 			"caller", log.DefaultCaller,
 		)
 	}
-	level.Info(logger).Log("msg", "service started")
-	defer level.Info(logger).Log("msg", "service ended")
+	_ = level.Info(logger).Log("msg", "service started")
+	defer func() {
+		_ = level.Info(logger).Log("msg", "service ended")
+	}()
 	// Создание сервиса
 	repo := repository.NewMemoryRepository()
 	svc := implementation.NewService(repo, logger)
@@ -54,7 +56,7 @@ func main() {
 		errs <- fmt.Errorf("%s", <-c)
 	}()
 	go func() {
-		level.Info(logger).Log("transport", "HTTP", "addr",
+		_ = level.Info(logger).Log("transport", "HTTP", "addr",
 			*httpAddr)
 		server := &http.Server{
 			Addr:    *httpAddr,
