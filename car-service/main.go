@@ -37,7 +37,7 @@ func main() {
 			"caller", log.DefaultCaller,
 		)
 	}
-	level.Info(logger).Log("msg", "service started")
+	_ = level.Info(logger).Log("msg", "service started")
 	defer level.Info(logger).Log("msg", "service ended")
 	// Создание сервиса
 	repo := repository.NewMemoryRepository()
